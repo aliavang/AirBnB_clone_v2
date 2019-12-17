@@ -15,8 +15,9 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
     cities = relationship('City', backref='state',
                           cascade='all, delete-orphan')
-"""    @property
+
     def cities(self):
-        Return list of City instances with state_id equal to current
+        """Return list of City instances with state_id equal to current
         State.id
-        return models.City.name"""
+        """
+        return City.name, City.state_id
