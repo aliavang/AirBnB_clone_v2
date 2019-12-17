@@ -74,3 +74,8 @@ class BaseModel:
         except:
             pass
         return my_dict
+
+    def delete(self):
+        """Delete current instance from storage
+        """
+        models.storage.delete(self)
