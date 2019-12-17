@@ -16,8 +16,13 @@ class State(BaseModel, Base):
     cities = relationship('City', backref='state',
                           cascade='all, delete-orphan')
 
+    @property
     def cities(self):
         """Return list of City instances with state_id equal to current
         State.id
         """
-        return City.name, City.state_id
+        list_cities = []
+        for city in models.storage.all(City).values:
+            if self.id == city.state_id:
+                list_cities.append(city)
+        return list_cities

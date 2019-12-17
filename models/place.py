@@ -33,3 +33,15 @@ class Place(BaseModel):
     amenity_ids = []
     reviews = relationship('Review', backref='place',
                            cascade='all, delete-orphan')
+    amenities = relationship('Amenity', secondary=place_amenity)
+
+    @property
+    def reviews(self):
+        """Return list of Review instances with place_id equal to current
+        Place.id
+        """
+        list_reviews = []
+        for review in models.storage.all(Review).values:
+                if self.id == review.place_id:
+                    list_reviews.append(review)
+        return list_reviews
