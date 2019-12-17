@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """This is the place class"""
 from models.base_model import BaseModel
-from models.review import Review
 from sqlalchemy import Column, Integer, Float, String, ForeignKey
 
 
