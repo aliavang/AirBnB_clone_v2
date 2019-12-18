@@ -30,7 +30,7 @@ class DBStorage():
             MySQL_user, MySQL_pwd, MySQL_host, MySQL_db), pool_pre_ping=True)
         Base.metadata.create_all(self.__engine)
         if MySQL_env == "test":
-            MySQL_user.__table__.drop(self.__engine)
+            Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
         """Show all class objects in DBStorage or specified class if given
