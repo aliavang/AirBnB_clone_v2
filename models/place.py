@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 """This is the place class"""
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, Float, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 
-class Place(BaseModel):
+class Place(BaseModel, Base):
     """This is the class for Place
     Attributes:
         city_id: city id
@@ -33,7 +34,9 @@ class Place(BaseModel):
     amenity_ids = []
     reviews = relationship('Review', backref='place',
                            cascade='all, delete-orphan')
+    """
     amenities = relationship('Amenity', secondary=place_amenity)
+    """
 
     @property
     def reviews(self):
