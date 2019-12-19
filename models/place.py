@@ -35,7 +35,7 @@ class Place(BaseModel, Base):
     reviews = relationship('Review', backref='place',
                            cascade='all, delete-orphan')
 
-    metadata = Base.metada
+    metadata = Base.metadata
     place_amenity = Table('place_amenity', metadata,
                           Column('place_id', String(60), ForeignKey(places.id),
                                  Primary_Key=True, nullable=False),
