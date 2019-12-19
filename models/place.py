@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This is the place class"""
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, Float, String, ForeignKey
+from sqlalchemy import Column, Integer, Float, String, ForeignKey, MetaData
 from sqlalchemy.orm import relationship
 
 
@@ -34,9 +34,15 @@ class Place(BaseModel, Base):
     amenity_ids = []
     reviews = relationship('Review', backref='place',
                            cascade='all, delete-orphan')
-    """
-    amenities = relationship('Amenity', secondary=place_amenity)
-    """
+
+    metadata = Base.metada
+    place_amenity = Table('place_amenity', metadata,
+                          Column('place_id', String(60), ForeignKey(places.id),
+                                 Primary_Key=True, nullable=False),
+                          Column('amenity_id', String(60),
+                                 ForeignKey(amenities.id), Primary_Key=True,
+                                 nullable=False)
+    )
 
     @property
     def reviews(self):
