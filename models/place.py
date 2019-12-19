@@ -43,8 +43,7 @@ class Place(BaseModel, Base):
                                  nullable=False),
                           Column('amenity_id', String(60),
                                  ForeignKey('amenities.id'), primary_key=True,
-                                 nullable=False)
-    )
+                                 nullable=False))
 
     @property
     def reviews(self):
