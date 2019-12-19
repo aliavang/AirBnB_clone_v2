@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This is the database storage"""
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.orm import sessionmaker, scoped_session, relationship
 from os import getenv
 from models.base_model import BaseModel, Base
 from models.user import User
@@ -17,6 +17,7 @@ class DBStorage():
     """
     __engine = None
     __session = None
+    amenities = relationship('Amenity', secondary=place_amenity, viewonly=False)
 
     def __init__(self):
         """Instantiation of DBStorage class
