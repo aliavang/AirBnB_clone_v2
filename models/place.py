@@ -42,8 +42,6 @@ class Place(BaseModel, Base):
                           Column('amenity_id', String(60),
                                  ForeignKey('amenities.id'), primary_key=True,
                                  nullable=False))
-    reviews = relationship('Review', backref='place',
-                           cascade='all, delete-orphan')
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         reviews = relationship('Review', backref='place',
                                cascade='all, delete-orphan')

@@ -48,6 +48,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(BaseModel, "save"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
 
+    def test_new_method(self):
+        """checking if delete method was added"""
+        self.assertTrue(hasattr(BaseModel, "delete"))
+
     def test_init_BaseModel(self):
         """test if the base is an type BaseModel"""
         self.assertTrue(isinstance(self.base, BaseModel))

@@ -68,6 +68,11 @@ class TestReview(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.rev), True)
 
+    def test_delete_review(self):
+        """test if delete works"""
+        cls.rev = Review()
+        cls.rev.name = 'Brent'
+        del cls.rev
 
 if __name__ == "__main__":
     unittest.main()

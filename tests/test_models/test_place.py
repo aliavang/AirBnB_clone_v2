@@ -92,6 +92,12 @@ class TestPlace(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.place), True)
 
+    def test_delete_city(self):
+        """test if delete works"""
+        cls.place = Place()
+        cls.place.name = 'Holberton'
+        cls.place.save()
+        del cls.place
 
 if __name__ == "__main__":
     unittest.main()

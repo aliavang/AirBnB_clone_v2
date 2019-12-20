@@ -62,6 +62,11 @@ class TestAmenity(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.amenity), True)
 
+    def test_delete_amenity(self):
+        """test if delete works"""
+        cls.amenity = Amenity()
+        cls.amenity.name = 'Cat'
+        del cls.amenity
 
 if __name__ == "__main__":
     unittest.main()

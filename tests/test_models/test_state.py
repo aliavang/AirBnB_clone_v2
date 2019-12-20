@@ -62,6 +62,11 @@ class TestState(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.state), True)
 
+    def test_delete_state(self):
+        """test if delete works"""
+        cls.state = State()
+        cls.state.name = 'Maryland'
+        del cls.state
 
 if __name__ == "__main__":
     unittest.main()
