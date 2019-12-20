@@ -68,19 +68,19 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(base_dict['created_at'], str)
         self.assertIsInstance(base_dict['updated_at'], str)
 
-    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'db'), 'file')
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db', 'file')
     def test_delete_basemodel_file(self):
         """test if delete works"""
-        cls.base = BaseModel()
-        cls.base.name = 'Brent'
-        del cls.base
+        self.base = BaseModel()
+        self.base.name = 'Brent'
+        del self.base
 
-    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'file'), 'db')
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'file', 'db')
     def test_delete_basemodel_db(self):
         """test if delete works"""
-        cls.base = BaseModel()
-        cls.base.name = 'Brent'
-        del cls.base
+        self.base = BaseModel()
+        self.base.name = 'Brent'
+        del self.base
 
 if __name__ == "__main__":
     unittest.main()

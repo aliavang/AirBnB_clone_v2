@@ -17,8 +17,6 @@ class DBStorage():
     """
     __engine = None
     __session = None
-    amenities = relationship('Amenity', secondary=Place.place_amenity,
-                             viewonly=False)
 
     def __init__(self):
         """Instantiation of DBStorage class

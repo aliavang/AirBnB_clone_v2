@@ -68,19 +68,19 @@ class TestReview(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.rev), True)
 
-    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'db'), 'file')
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db', 'file')
     def test_delete_review_file(self):
         """test if delete works"""
-        cls.rev = Review()
-        cls.rev.name = 'Brent'
-        del cls.rev
+        self.rev = Review()
+        self.rev.name = 'Brent'
+        del self.rev
 
-    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'file'), 'db')
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'file', 'db')
     def test_delete_review_db(self):
         """test if delete works"""
-        cls.rev = Review()
-        cls.rev.name = 'Brent'
-        del cls.rev
+        self.rev = Review()
+        self.rev.name = 'Brent'
+        del self.rev
 
 if __name__ == "__main__":
     unittest.main()
