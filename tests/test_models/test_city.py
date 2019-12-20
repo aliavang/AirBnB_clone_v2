@@ -65,7 +65,15 @@ class TestCity(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.city), True)
 
-    def test_delete_city(self):
+    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'db'), 'file')
+    def test_delete_city_file(self):
+        """test if delete works"""
+        cls.city = City()
+        cls.city.name = 'Baltimore'
+        del cls.city
+
+    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'file'), 'db')
+    def test_delete_city_db(self):
         """test if delete works"""
         cls.city = City()
         cls.city.name = 'Baltimore'

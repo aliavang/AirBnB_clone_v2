@@ -62,7 +62,15 @@ class TestAmenity(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.amenity), True)
 
-    def test_delete_amenity(self):
+    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'db'), 'file')
+    def test_delete_amenity_file(self):
+        """test if delete works"""
+        cls.amenity = Amenity()
+        cls.amenity.name = 'Cat'
+        del cls.amenity
+
+    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'file'), 'db')
+    def test_delete_amenity_db(self):
         """test if delete works"""
         cls.amenity = Amenity()
         cls.amenity.name = 'Cat'

@@ -71,7 +71,16 @@ class TestUser(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.user), True)
 
-    def test_delete_user(self):
+    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'db'), 'file')
+    def test_delete_user_file(self):
+        """test if delete works"""
+        cls.user = User()
+        cls.user.first_name = 'Alia'
+        cls.user.last_name = 'Vang'
+        del cls.user
+
+    @unittest.skipIf(getenv('HBNB_TYPE_STORAGE' == 'file'), 'db')
+    def test_delete_user_file(self):
         """test if delete works"""
         cls.user = User()
         cls.user.first_name = 'Alia'
