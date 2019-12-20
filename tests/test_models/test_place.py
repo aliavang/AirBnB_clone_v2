@@ -83,6 +83,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(self.place.longitude), float)
         self.assertEqual(type(self.place.amenity_ids), list)
 
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db', 'file')
     def test_save_Place(self):
         """test if the save works"""
         self.place.save()
@@ -100,7 +101,7 @@ class TestPlace(unittest.TestCase):
         self.place.save()
         del self.place
 
-    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'file', 'db')
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db', 'file')
     def test_delete_city_db(self):
         """test if delete works"""
         self.place = Place()
