@@ -22,7 +22,7 @@ def hbnb():
 def c(text):
     """Print C followed by text"""
     msg = text.replace('_', ' ')
-    return msg
+    return "C {}".format(msg)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port='5000')
